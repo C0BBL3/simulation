@@ -1,4 +1,4 @@
-from directednode import DirectedNode
+from directed_node import DirectedNode
 
 class DirectedGraph:
     def __init__(self, edges, values = None):

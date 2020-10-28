@@ -3,7 +3,7 @@ import math
 import matplotlib.pyplot as plt
 
 class BiologicalNeuron:
-    def __init__(self, stimulus):
+    def __init__(self, stimulus=None):
         self.stimulus = stimulus
         self.derivatives = [self.dV, self.dn, self.dm, self.dh]
         self.x = 0.07 * (math.e ** 3 + 1)

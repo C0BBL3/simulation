@@ -19,7 +19,7 @@ synapses = [(0,1), (1,2)]
 network = BiologicalNeuralNetwork(neurons, synapses)
 euler = EulerEstimator(
         derivatives = network.get_derivatives(),
-        point = network.get_starting_point()
+        start_point = network.get_starting_point()
     )
 plt.plot([n/2 for n in range(160)], [electrode_voltage(n/2) for n in range(160)])
-euler.plot([0, 80], step_size = 0.001)
+euler.plot([0, 80], stepsize = 0.001)
