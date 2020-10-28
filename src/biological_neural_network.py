@@ -12,10 +12,11 @@ class BiologicalNeuralNetwork:
 		#print([lambda t,x: derivative(t,x[len(neuron.derivatives)*i:len(neuron.derivatives)*i]) + x[len(neuron.derivatives)*i] if j == 0 else derivative(t,x[len(neuron.derivatives)*i:len(neuron.derivatives)*i+len(neuron.derivatives)]) for i, neuron in enumerate(self.neurons) for j, derivative in enumerate(neuron.derivatives)])
 		#return [lambda t,x: derivative(t,x[len(neuron.derivatives)*i:len(neuron.derivatives)*i]) + x[len(neuron.derivatives)*i] if j == 0 else derivative(t,x[len(neuron.derivatives)*i:len(neuron.derivatives)*i+len(neuron.derivatives)]) for i, neuron in enumerate(self.neurons) for j, derivative in enumerate(neuron.derivatives)]
 		derivatives, current_neuron, i = [], self.neurons[0], 0
-		while current_neuron.child != None:
+		while True:
 			for j, derivative in enumerate(current_neuron.derivatives):
-				if j == 0: derivatives.append(lambda t,x: derivative(t,x[len(current_neuron.derivatives)*i:len(current_neuron.derivatives)*i]) + x[len(current_neuron.derivatives)*i])
-				else: derivatives.append(lambda t,x: derivative(t,x[len(current_neuron.derivatives)*i:len(current_neuron.derivatives)*i+len(current_neuron.derivatives)]))
+				print('i', i, 'len(current_neuron.derivatives)*i', len(current_neuron.derivatives)*i, 'len(current_neuron.derivatives)*i+len(current_neuron.derivatives)', len(current_neuron.derivatives)*i + len(current_neuron.derivatives))
+				if j == 0: derivatives.append(lambda t,x, i=i: derivative(t,x[len(current_neuron.derivatives)*i:len(current_neuron.derivatives)*i]) + x[len(current_neuron.derivatives)*i])
+				else: derivatives.append(lambda t,x, i=i: derivative(t,x[len(current_neuron.derivatives)*i:len(current_neuron.derivatives)*i+len(current_neuron.derivatives)]))
 			if current_neuron.child != None: current_neuron = current_neuron.child
 			else: break
 			i += 1
