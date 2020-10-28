@@ -7,10 +7,6 @@ class EulerEstimator:
 		self.point = list(start_point)
     
 	def calc_derivative(self):
-		print('self.point[0]', self.point[0])
-		print('self.point[1]', self.point[1])
-		for derivative in self.derivatives:
-			print('derivative(self.point[0], self.point[1])', derivative(self.point[0], self.point[1]))
 		return [derivative(self.point[0], self.point[1]) for derivative in self.derivatives]
     
 	def step(self, precision):
@@ -29,20 +25,16 @@ class EulerEstimator:
 	def plot(self, x_range, stepsize=0.1, filename='plot.png'):
 		if self.original_point[0] == x_range[1]: xs, ys = self.get_positions_for_line(x_range, -stepsize)
 		else: xs, ys = self.get_positions_for_line(x_range, stepsize)
-		print('xs', xs)''''
 		for y in [[ys[i][j] for i in range(0, len(ys))] for j in range(0, len(self.point[1]))]: plt.plot(xs, y)
 		plt.savefig(filename)
-		plt.show()''''
+		plt.show()
 		
 	def get_positions_for_line(self, x_range, stepsize):
 		xs_forward, ys_forward = self.get_xs_and_ys(x_range[1],  stepsize)
 		xs_backward, ys_backward = self.get_xs_and_ys(x_range[0], -1 * stepsize)
-		print('xs_backward[1:][::-1] + xs_forward', xs_backward[1:][::-1] + xs_forward)
 		return xs_backward[1:][::-1] + xs_forward, ys_backward[1:][::-1] + ys_forward
 
 	def get_xs_and_ys(self, x, stepsize):
-		print('hellow')
 		self.go_to_input(x, stepsize)
-		print('h')
 		self.point = [pos for pos in self.original_point]
 		return [x for x in self.x_points], [y for y in self.y_points]

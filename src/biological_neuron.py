@@ -1,9 +1,9 @@
 from euler_estimator import EulerEstimator
 import math
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 class BiologicalNeuron:
-    def __init__(self, stimulus=None):
+    def __init__(self, stimulus=lambda t: 0):
         self.stimulus = stimulus
         self.derivatives = [self.dV, self.dn, self.dm, self.dh]
         self.x = 0.07 * (math.e ** 3 + 1)
@@ -11,12 +11,11 @@ class BiologicalNeuron:
         self.initial_positions = (0, (self.initial_v, self.initial_n, self.initial_m, self.initial_h))
         self.C, self.V_Na, self.V_k, self.V_L, self.g_bar_Na, self.g_bar_k, self.g_bar_l = 1, 115, -12, 10.6, 120, 36,  0.3
         self.child = None
-        self.parent = None
 
-    def plot_activity(self):
-        euler = EulerEstimator(self.derivatives, self.initial_positions)
-        plt.plot([n/2 for n in range(160)], [self.stimulus(n/2) for n in range(160)])
-        euler.plot([0, 80], stepsize =0.02)
+  #  def plot_activity(self):
+     #   euler = EulerEstimator(self.derivatives, self.initial_positions)
+      #  plt.plot([n/2 for n in range(160)], [self.stimulus(n/2) for n in range(160)])
+       # euler.plot([0, 80], stepsize =0.02)
 
     def dV(self, t, x): return 1/self.C * (self.stimulus(t) - self.I_Na(t, x) - self.I_k(t, x) - self.I_L(t, x))
     def dn(self, t, x): return self.a_n(t, x) * (1 - x[1]) - self.b_n(t, x) * x[1]

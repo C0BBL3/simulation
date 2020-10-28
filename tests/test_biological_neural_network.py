@@ -21,5 +21,5 @@ euler = EulerEstimator(
         derivatives = network.get_derivatives(),
         start_point = network.get_starting_point()
     )
-plt.plot([n/2 for n in range(160)], [electrode_voltage(n/2) for n in range(160)])
+#plt.plot([n/2 for n in range(160)], [electrode_voltage(n/2) for n in range(160)])
 euler.plot([0, 80], stepsize = 0.001)
