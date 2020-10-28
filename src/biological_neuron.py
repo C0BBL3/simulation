@@ -1,6 +1,6 @@
 from euler_estimator import EulerEstimator
 import math
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 class BiologicalNeuron:
     def __init__(self, stimulus=lambda t: 0):
@@ -12,10 +12,10 @@ class BiologicalNeuron:
         self.C, self.V_Na, self.V_k, self.V_L, self.g_bar_Na, self.g_bar_k, self.g_bar_l = 1, 115, -12, 10.6, 120, 36,  0.3
         self.child = None
 
-  #  def plot_activity(self):
-     #   euler = EulerEstimator(self.derivatives, self.initial_positions)
-      #  plt.plot([n/2 for n in range(160)], [self.stimulus(n/2) for n in range(160)])
-       # euler.plot([0, 80], stepsize =0.02)
+    def plot_activity(self):
+        euler = EulerEstimator(self.derivatives, self.initial_positions)
+        plt.plot([n/2 for n in range(160)], [self.stimulus(n/2) for n in range(160)])
+        euler.plot([0, 80], stepsize =0.02)
 
     def dV(self, t, x): return 1/self.C * (self.stimulus(t) - self.I_Na(t, x) - self.I_k(t, x) - self.I_L(t, x))
     def dn(self, t, x): return self.a_n(t, x) * (1 - x[1]) - self.b_n(t, x) * x[1]
@@ -33,7 +33,6 @@ class BiologicalNeuron:
     def g_k(self, t, x): return self.g_bar_k * x[1] ** 4
     def I_L(self, t, x): return self.g_l(t, x) * (x[0] - self.V_L)
     def g_l(self, t, x): return self.g_bar_l
-
 
 def stimulus(t):
     if 10 <= t <= 11 or 20 <= t <= 21 or 30 <= t <= 40 or 50 <= t <= 51 or 53 <= t <= 54 or 56 <= t <= 57 or 59 <= t <= 60 or 62 <= t <= 63 or 65 <= t <= 66: return 150
