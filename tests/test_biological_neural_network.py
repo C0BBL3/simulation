@@ -6,10 +6,8 @@ import matplotlib.pyplot as plt
 print('\nTesting...\n')
 
 def electrode_voltage(t):
-    if 10 <= t <= 11 or 20 <= t <= 21 or 30 <= t <= 40 or 50 <= t <= 51 or 53 <= t <= 54 or 56 <= t <= 57 or 59 <= t <= 60 or 62 <= t <= 63 or 65 <= t <= 66:
-        return 150
-    else:
-        return 0
+    if 10 <= t <= 11 or 20 <= t <= 21 or 30 <= t <= 40 or 50 <= t <= 51 or 53 <= t <= 54 or 56 <= t <= 57 or 59 <= t <= 60 or 62 <= t <= 63 or 65 <= t <= 66: return 150
+    else: return 0
 
 neuron_0 = BiologicalNeuron(stimulus=electrode_voltage)
 neuron_1 = BiologicalNeuron()

@@ -10,10 +10,16 @@ class BiologicalNeuralNetwork:
         while True:
             num_derivatives = len(current_neuron.derivatives)
             for derivative_index, derivative in enumerate(current_neuron.derivatives):
-                if derivative_index == 0 and neuron_index > 0: derivatives.append(lambda t, x, neuron_index=neuron_index, derivative=derivative: derivative(t, x[num_derivatives*neuron_index:(num_derivatives+1)*neuron_index])+ x[num_derivatives*(neuron_index-1)])
-                else: derivatives.append(lambda t, x, neuron_index=neuron_index, derivative=derivative: derivative(t, x[num_derivatives*neuron_index:(num_derivatives+1)*neuron_index]))
-            if current_neuron.child != None: current_neuron = current_neuron.child
-            else: break
+                if derivative_index == 0 and neuron_index > 0:
+                    derivatives.append(lambda t, x, neuron_index=neuron_index, derivative=derivative: derivative(
+                        t, x[num_derivatives*neuron_index:(num_derivatives+1)*neuron_index]) + x[num_derivatives*(neuron_index-1)])
+                else:
+                    derivatives.append(lambda t, x, neuron_index=neuron_index, derivative=derivative: derivative(
+                        t, x[num_derivatives*neuron_index:(num_derivatives+1)*neuron_index]))
+            if current_neuron.child != None:
+                current_neuron = current_neuron.child
+            else:
+                break
             neuron_index += 1
         return derivatives
 

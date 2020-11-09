@@ -1,6 +1,6 @@
 from euler_estimator import EulerEstimator
 import math
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 class BiologicalNeuron:
     def __init__(self, stimulus=lambda t: 0):
