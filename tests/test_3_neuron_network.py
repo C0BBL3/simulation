@@ -1,15 +1,15 @@
 from src.euler_estimator import EulerEstimator
 from src.biological_neuron import BiologicalNeuron
-from src.biological_neural_network import BiologicalNeuralNetwork
+from analysis.three_neuron_network import BiologicalNeuralNetwork
 import matplotlib.pyplot as plt
+
 
 print('\nTesting...\n')
 
+
 def electrode_voltage(t):
-    if 10 <= t <= 11 or 20 <= t <= 21 or 30 <= t <= 40 or 50 <= t <= 51 or 53 <= t <= 54 or 56 <= t <= 57 or 59 <= t <= 60 or 62 <= t <= 63 or 65 <= t <= 66:
-        return 150
-    else:
-        return 0
+    if t in [10,11,20,21,30,40,50,51,53,54,56,57,59,60,62,63,65,66]: return 50
+    else: return 0
 
 neuron_0 = BiologicalNeuron(stimulus=electrode_voltage)
 neuron_1 = BiologicalNeuron()
