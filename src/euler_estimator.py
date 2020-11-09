@@ -1,4 +1,4 @@
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 class EulerEstimator:
     def __init__(self, derivatives, start_point):
@@ -28,7 +28,7 @@ class EulerEstimator:
         else:
             xs, ys = self.get_positions_for_line(x_range, stepsize)
         for y in [[ys[i][j] for i in range(0, len(ys))] for j in range(0, len(self.point[1]))]:
-            #plt.plot(xs, y)
+            plt.plot(xs, y)
         plt.savefig(filename)
         plt.show()
 

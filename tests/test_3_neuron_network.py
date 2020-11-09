@@ -4,7 +4,7 @@ from euler_estimator import EulerEstimator
 from biological_neuron import BiologicalNeuron
 sys.path[-1] = ('analysis')
 from three_neuron_network import BiologicalNeuralNetwork
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 
 
 print('\nTesting...\n')
@@ -24,5 +24,5 @@ euler = EulerEstimator(
     derivatives=network.get_derivatives(),
     start_point=network.get_starting_point()
 )
-#plt.plot([n/2 for n in range(160)], [electrode_voltage(n/2) for n in range(160)])
+plt.plot([n/2 for n in range(160)], [electrode_voltage(n/2) for n in range(160)])
 euler.plot([0, 80], stepsize=0.001)
